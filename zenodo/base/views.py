@@ -33,8 +33,8 @@ from flask.ext.menu import current_menu, register_menu
 from invenio.base.globals import cfg
 from invenio.base.i18n import _
 from invenio.base.signals import pre_template_render
-from invenio.ext.template. \
-    context_processor import register_template_context_processor
+from invenio.ext.template.context_processor import \
+    register_template_context_processor
 from invenio.utils import persistentid
 
 from zenodo.base.utils.bibtex import Bibtex
@@ -59,48 +59,49 @@ def register_menu_items():
     item = current_menu.submenu('main.browse')
     item.register(
         '', _('Browse'), order=3,
-        active_when=lambda: request.endpoint.startswith("search.collection")
+        active_when=lambda: request.endpoint.startswith(
+            "collections.collection")
     )
 
     item = current_menu.submenu('main.browse.datasets')
     item.register(
-        'search.collection', _('Datasets'), order=1,
+        'collections.collection', _('Datasets'), order=1,
         endpoint_arguments_constructor=lambda: dict(name='datasets')
     )
 
     item = current_menu.submenu('main.browse.images')
     item.register(
-        'search.collection', _('Images'), order=2,
+        'collections.collection', _('Images'), order=2,
         endpoint_arguments_constructor=lambda: dict(name='images')
     )
 
     item = current_menu.submenu('main.browse.posters')
     item.register(
-        'search.collection', _('Posters'), order=3,
+        'collections.collection', _('Posters'), order=3,
         endpoint_arguments_constructor=lambda: dict(name='posters')
     )
 
     item = current_menu.submenu('main.browse.presentations')
     item.register(
-        'search.collection', _('Presentations'), order=4,
+        'collections.collection', _('Presentations'), order=4,
         endpoint_arguments_constructor=lambda: dict(name='presentations')
     )
 
     item = current_menu.submenu('main.browse.publications')
     item.register(
-        'search.collection', _('Publications'), order=5,
+        'collections.collection', _('Publications'), order=5,
         endpoint_arguments_constructor=lambda: dict(name='publications')
     )
 
     item = current_menu.submenu('main.browse.software')
     item.register(
-        'search.collection', _('Software'), order=6,
+        'collections.collection', _('Software'), order=6,
         endpoint_arguments_constructor=lambda: dict(name='software')
     )
 
     item = current_menu.submenu('main.browse.videos')
     item.register(
-        'search.collection', _('Video/Audio'), order=7,
+        'collections.collection', _('Video/Audio'), order=7,
         endpoint_arguments_constructor=lambda: dict(name='videos')
     )
 
